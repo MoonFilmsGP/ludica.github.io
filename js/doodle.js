@@ -1,6 +1,10 @@
 const canvas = document.getElementById('doodle-canvas');
 const ctx = canvas.getContext('2d');
 
+// Cargar fondo
+const bgImage = new Image();
+bgImage.src = 'assets/portadas/ludica.jpg';
+
 // Ajustar tamaño
 function resize() {
     canvas.width = window.innerWidth;
@@ -90,6 +94,12 @@ function update() {
 // Dibujo
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (bgImage.complete) {
+        ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
     ctx.fillStyle = '#444';
     letters.forEach(l => {
