@@ -32,12 +32,12 @@ const letterSpacing = 120;
 // Jugador
 const player = {
     frame: 0,
-    frameCount: 4,
+    frameCount: 6,
     frameDelay: 0,
     x: 100,
     y: floorY - 40,
-    width: 32,
-    height: 32,
+    width: 48,
+    height: 48,
     color: '#00f',
     vy: 0,
     onGround: false
@@ -117,8 +117,8 @@ function draw() {
     });
 
     if (sprite.complete) {
-        const frameWidth = 32;
-        const frameHeight = 32;
+        const frameWidth = 48;
+        const frameHeight = 48;
         console.log('Dibujando sprite en', player.x, player.y, 'frame', player.frame);
         ctx.drawImage(
             sprite,
