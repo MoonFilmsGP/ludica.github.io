@@ -19,232 +19,96 @@
                     height: 60vh;
                     z-index: 1;
                     pointer-events: none;
-    }
-                    .banner {
-                        position: absolute;
-                    top: 2rem;
-                    left: 2rem;
-                    z-index: 10;
-                    font-size: 3rem;
-                    font-weight: bold;
-                    color: #fff;
-                    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-                    font-family: 'Orbitron', sans-serif;
-    }
-                    section {
-                        display: none;
-                    padding: 2rem;
-                    background: #222;
-                    color: #eee;
-                    font-size: 1.2rem;
-    }
-                    section.active {
-                        display: block;
-    }
-                    #articles-grid {
-                        display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                    gap: 1rem;
-                    padding: 2rem;
-    }
-                    .article-card {
-                        border: 1px solid #444;
-                    border-radius: 8px;
-                    overflow: hidden;
-                    background-color: #1a1a1a;
-                    color: #eee;
-                    transition: transform 0.2s;
-    }
-                    .article-card:hover {
-                        transform: scale(1.02);
-    }
-                    .article-card img {
-                        width: 100%;
-                    height: auto;
-                    display: block;
-    }
-                    .article-card h2 {
-                        font - size: 1.2rem;
-                    margin: 1rem;
-    }
-                    .article-card p {
-                        font - size: 1rem;
-                    margin: 0 1rem 1rem;
-    }
-                    .article-card a {
-                        display: block;
-                    text-align: right;
-                    margin: 0 1rem 1rem;
-                    color: #89c4f4;
-                    text-decoration: none;
+                    background: #000;
     }
                 </style>
-                <link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-                </head>
-                <body>
-                    <canvas id="doodle-canvas"></canvas>
-                    <div class="banner">LÚDICA</div>
-                    <main style="margin-top: 60vh; position: relative; z-index: 2;">
-                        <section id="Principal" class="active">
-                            <div id="articles-grid">
-                                <!-- Aquí se generarán las tarjetas de artículos -->
-                            </div>
-                        </section>
-                        <section id="Actualidad">
-                            <div id="articles-grid"></div>
-                        </section>
-                        <section id="Reportajes">
-                            <div id="articles-grid"></div>
-                        </section>
-                        <section id="Entrevistas">
-                            <div id="articles-grid"></div>
-                        </section>
-                        <section id="Opiniones">
-                            <div id="articles-grid"></div>
-                        </section>
-                    </main>
-                    <script>
-                        const canvas = document.getElementById('doodle-canvas');
-                        const ctx = canvas.getContext('2d');
-                        canvas.width = window.innerWidth;
-                        canvas.height = window.innerHeight * 0.6;
+        </head>
+        <body>
+            <canvas id="doodle-canvas"></canvas>
+            <script>
+                const canvas = document.getElementById('doodle-canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight * 0.6;
 
-                        const gravity = 0.6;
-                        const jumpStrength = -12;
-                        const floorY = canvas.height * 0.75;
-                        const sectionSpacing = canvas.width / 6;
+                const gravity = 0.6;
+                const jumpStrength = -12;
+                const floorY = canvas.height * 0.75;
+                const sectionSpacing = canvas.width / 6;
 
-                        const player = {
-                            x: 100,
-                        y: floorY - 40,
-                        width: 30,
-                        height: 30,
-                        color: '#00f',
-                        vy: 0,
-                        onGround: false
+                const player = {
+                    x: 100,
+                y: floorY - 40,
+                width: 30,
+                height: 30,
+                color: '#00f',
+                vy: 0,
+                onGround: false
 };
 
-                        const sections = ['Principal', 'Actualidad', 'Reportajes', 'Entrevistas', 'Opiniones'];
-const platforms = sections.map((label, i) => ({
-                            x: sectionSpacing * (i + 1) - 30,
-                        y: floorY,
-                        width: 120,
-                        height: 20,
-                        label: label
+                const platforms = Array.from({length: 5}, (_, i) => ({
+                    x: sectionSpacing * (i + 1) - 30,
+                y: floorY,
+                width: 120,
+                height: 20
 }));
 
-                        let keys = { };
+                let keys = { };
 window.addEventListener('keydown', e => keys[e.key] = true);
 window.addEventListener('keyup', e => keys[e.key] = false);
 
-                        function update() {
+                function update() {
   if (keys['ArrowLeft'] || keys['a']) player.x -= 5;
-                        if (keys['ArrowRight'] || keys['d']) player.x += 5;
+                if (keys['ArrowRight'] || keys['d']) player.x += 5;
 
-                        if ((keys['ArrowUp'] || keys['w'] || keys[' ']) && player.onGround) {
-                            player.vy = jumpStrength;
-                        player.onGround = false;
+                if ((keys['ArrowUp'] || keys['w'] || keys[' ']) && player.onGround) {
+                    player.vy = jumpStrength;
+                player.onGround = false;
   }
 
-                        player.vy += gravity;
-                        player.y += player.vy;
+                player.vy += gravity;
+                player.y += player.vy;
 
-                        player.onGround = false;
+                player.onGround = false;
   platforms.forEach(platform => {
     if (
-                        player.x < platform.x + platform.width &&
+                player.x < platform.x + platform.width &&
       player.x + player.width > platform.x &&
-                        player.y + player.height < platform.y + 10 &&
+                player.y + player.height < platform.y + 10 &&
       player.y + player.height + player.vy >= platform.y
-                        ) {
-                            player.y = platform.y - player.height;
-                        player.vy = 0;
-                        player.onGround = true;
-                        activateSection(platform.label);
+                ) {
+                    player.y = platform.y - player.height;
+                player.vy = 0;
+                player.onGround = true;
     }
   });
 
   if (player.y > canvas.height) {
-                            player.y = floorY - player.height;
-                        player.vy = 0;
-                        player.x = 100;
+                    player.y = floorY - player.height;
+                player.vy = 0;
+                player.x = 100;
   }
 }
 
-                        function draw() {
-                            ctx.fillStyle = 'red';
-                            ctx.fillRect(10, 10, 100, 100);
+                function draw() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                        ctx.fillStyle = '#444';
+                ctx.fillStyle = '#444';
   platforms.forEach(p => {
-                            ctx.fillRect(p.x, p.y, p.width, p.height);
-                        ctx.fillStyle = '#fff';
-                        ctx.font = '16px Inter';
-                        ctx.fillText(p.label, p.x + 10, p.y - 10);
-                        ctx.fillStyle = '#444';
+                    ctx.fillRect(p.x, p.y, p.width, p.height);
   });
 
-                        ctx.fillStyle = player.color;
-                        ctx.fillRect(player.x, player.y, player.width, player.height);
+                ctx.fillStyle = player.color;
+                ctx.fillRect(player.x, player.y, player.width, player.height);
 }
 
-                        function activateSection(label) {
-                            sections.forEach(s => {
-                                const el = document.getElementById(s);
-                                if (el) el.classList.remove('active');
-                            });
-                        const target = document.getElementById(label);
-                        if (target) target.classList.add('active');
-
-  document.querySelectorAll('.article-card').forEach(card => {
-    if (card.dataset.category === label || label === 'Principal') {
-                            card.style.display = 'block';
-                        card.style.opacity = 0;
-                        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-      setTimeout(() => {
-                            card.style.opacity = 1;
-                        card.style.transform = 'translateY(0)';
-      }, 0);
-    } else {
-                            card.style.opacity = 0;
-                        card.style.transform = 'translateY(20px)';
-      setTimeout(() => {
-                            card.style.display = 'none';
-      }, 300);
-    }
-  });
+                function loop() {
+                    update();
+                draw();
+                requestAnimationFrame(loop);
 }
 
-                        function loop() {
-                            update();
-                        draw();
-                        requestAnimationFrame(loop);
-}
-
-                        loop();
-                    </script>
-                    <script>
-                        fetch('index.json')
-  .then(res => res.json())
-  .then(data => {
-    const allGrids = document.querySelectorAll('#articles-grid');
-    allGrids.forEach(grid => grid.innerHTML = '');
-    data.forEach(article => {
-      const card = document.createElement('div');
-                        card.className = 'article-card';
-                        card.dataset.category = article.category || 'Principal';
-                        card.innerHTML = `
-                        <img src="${article.thumbnail}" alt="${article.title}" />
-                        <h2>${article.title}</h2>
-                        <p>${article.lead}</p>
-                        <a href="articles/${article.path}">Leer más</a>
-                        `;
-                        allGrids[0].appendChild(card);
-    });
-  })
-  .catch(err => console.error('Error cargando artículos:', err));
-                    </script>
-                </body>
-            </html>
+                loop();
+            </script>
+        </body>
+    </html>
