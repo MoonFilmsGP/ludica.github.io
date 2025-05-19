@@ -7,18 +7,19 @@
                     html, body {
                         margin: 0;
                     padding: 0;
-                    overflow: hidden;
                     background: #111;
                     font-family: 'Inter', sans-serif;
     }
                     canvas {
                         display: block;
-                    position: absolute;
+                    position: fixed;
                     top: 0;
                     left: 0;
+                    width: 100%;
+                    height: 60vh;
                     z-index: 1;
-                    pointer-events: none; 
-}
+                    pointer-events: none;
+    }
                     .banner {
                         position: absolute;
                     top: 2rem;
@@ -81,30 +82,29 @@
                 <link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron:wght@700&display=swap" rel="stylesheet">
                 </head>
                 <body>
-                  
+                    <canvas id="doodle-canvas"></canvas>
                     <div class="banner">LÚDICA</div>
-                    <canvas id="gameCanvas"></canvas>
-
-                    <section id="Principal" class="active">
-                        <div id="articles-grid">
-                            <!-- Aquí se generarán las tarjetas de artículos -->
-                        </div>
-                    </section>
-                    <section id="Actualidad">
-                        <div id="articles-grid"></div>
-                    </section>
-                    <section id="Reportajes">
-                        <div id="articles-grid"></div>
-                    </section>
-                    <section id="Entrevistas">
-                        <div id="articles-grid"></div>
-                    </section>
-                    <section id="Opiniones">
-                        <div id="articles-grid"></div>
-                    </section>
-
+                    <main style="margin-top: 60vh; position: relative; z-index: 2;">
+                        <section id="Principal" class="active">
+                            <div id="articles-grid">
+                                <!-- Aquí se generarán las tarjetas de artículos -->
+                            </div>
+                        </section>
+                        <section id="Actualidad">
+                            <div id="articles-grid"></div>
+                        </section>
+                        <section id="Reportajes">
+                            <div id="articles-grid"></div>
+                        </section>
+                        <section id="Entrevistas">
+                            <div id="articles-grid"></div>
+                        </section>
+                        <section id="Opiniones">
+                            <div id="articles-grid"></div>
+                        </section>
+                    </main>
                     <script>
-                        const canvas = document.getElementById('gameCanvas');
+                        const canvas = document.getElementById('doodle-canvas');
                         const ctx = canvas.getContext('2d');
                         canvas.width = window.innerWidth;
                         canvas.height = window.innerHeight * 0.6;
@@ -195,7 +195,6 @@ window.addEventListener('keyup', e => keys[e.key] = false);
                         const target = document.getElementById(label);
                         if (target) target.classList.add('active');
 
-  // Filtrar artículos según categoría
   document.querySelectorAll('.article-card').forEach(card => {
     if (card.dataset.category === label || label === 'Principal') {
                             card.style.display = 'block';
@@ -223,9 +222,7 @@ window.addEventListener('keyup', e => keys[e.key] = false);
 
                         loop();
                     </script>
-
                     <script>
-// Cargar artículos desde index.json (debe estar servido desde el mismo dominio)
                         fetch('index.json')
   .then(res => res.json())
   .then(data => {
@@ -241,7 +238,7 @@ window.addEventListener('keyup', e => keys[e.key] = false);
                         <p>${article.lead}</p>
                         <a href="articles/${article.path}">Leer más</a>
                         `;
-                        allGrids[0].appendChild(card); // solo al primero (Principal), luego JS lo filtra
+                        allGrids[0].appendChild(card);
     });
   })
   .catch(err => console.error('Error cargando artículos:', err));
