@@ -24,7 +24,7 @@ for article in articles:
     # Armar el HTML nuevo
     final_html = template.replace("{{ title }}", title)
     final_html = final_html.replace("{{ date }}", date)
-    final_html = final_html.replace("{{ path }}", path)
+    final_html = final_html.replace("{{ path }}", path.replace(".html", ""))
     final_html = final_html.replace("{{ content }}", content)
     
 
