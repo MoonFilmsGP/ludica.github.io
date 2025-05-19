@@ -13,7 +13,11 @@
     }
                     canvas {
                         display: block;
-    }
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 0;
+}
                     .banner {
                         position: absolute;
                     top: 2rem;
