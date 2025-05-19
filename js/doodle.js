@@ -36,8 +36,8 @@ const player = {
     frameDelay: 0,
     x: 100,
     y: floorY - 40,
-    width: 30,
-    height: 30,
+    width: 32,
+    height: 32,
     color: '#00f',
     vy: 0,
     onGround: false
@@ -135,4 +135,7 @@ function loop() {
     requestAnimationFrame(loop);
 }
 
-loop();
+// Esperar a que el sprite cargue antes de iniciar
+sprite.onload = () => {
+    loop();
+};
