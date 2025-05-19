@@ -172,6 +172,9 @@ window.addEventListener('keyup', e => keys[e.key] = false);
 }
 
                         function draw() {
+                            ctx.fillStyle = 'red';
+                            ctx.fillRect(10, 10, 100, 100);
+
                             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                         ctx.fillStyle = '#444';
