@@ -1,63 +1,63 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>¿El primer Indie GOTY de la historia?</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <style>
+    /* Reset mínimo + estilo general */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
-      background: #f4f4f4;
       font-family: 'Inter', sans-serif;
-      color: #222;
+      line-height: 1.6;
+      background: #111;
+      color: #eee;
+      padding: 0;
     }
 
     .hero {
-      height: 280px;
+      height: 60vh;
       background-image: url('../assets/portadas/2025-05-18-parry.jpg');
       background-size: cover;
       background-position: center;
       display: flex;
       align-items: flex-end;
       padding: 2rem;
-      color: white;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
-      font-family: 'DM Serif Text', serif;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
     }
 
     .container {
-      max-width: 900px;
-      margin: -50px auto 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 3rem 5vw;
     }
 
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: #fff;
     }
 
     .meta {
+      color: #aaa;
       font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .article-body {
-      column-count: 2;
-      column-gap: 2rem;
-      line-height: 1.7;
       font-size: 1.05rem;
+      column-count: 2;
+      column-gap: 2.5rem;
     }
 
     blockquote {
-      border-left: 4px solid #222;
-      margin: 1.5rem 0;
+      border-left: 4px solid #444;
       padding-left: 1rem;
+      margin: 2rem 0;
       font-style: italic;
-      color: #444;
+      color: #ccc;
       break-inside: avoid;
     }
 
@@ -65,8 +65,8 @@
       display: inline-block;
       margin-top: 3rem;
       text-decoration: none;
-      background: #111;
-      color: white;
+      background: #eee;
+      color: #111;
       padding: 0.6rem 1.2rem;
       border-radius: 6px;
       font-weight: bold;
@@ -74,7 +74,17 @@
     }
 
     .back-button:hover {
-      background: #444;
+      background: #ccc;
+    }
+
+    @media (max-width: 768px) {
+      .article-body {
+        column-count: 1;
+      }
+      .hero {
+        height: 40vh;
+        padding: 1rem;
+      }
     }
     </style>
 </head>
