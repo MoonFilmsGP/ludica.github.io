@@ -18,8 +18,8 @@ resize();
 // Actualizar encabezado
 const headlineEl = document.getElementById('headline');
 const leadEl = document.getElementById('lead');
-headlineEl.textContent = 'Expedition Clair Obscur 33: Indie GOTY?';
-leadEl.textContent = '¿Será este el primer indie GOTY de la historia? Prueba su sistema de parry…';
+//headlineEl.textContent = 'Expedition Clair Obscur 33: Indie GOTY?';
+//leadEl.textContent = '¿Será este el primer indie GOTY de la historia? Prueba su sistema de parry…';
 
 // ==================== ENGINE DEL MONITO ====================
 
