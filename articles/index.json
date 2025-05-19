@@ -1,3 +1,11 @@
+
 [
-  "2025-05-18-parry.json"
+  {
+    "title": "¿El primer Indie GOTY de la historia?",
+    "slug": "2025-05-18-parry",
+    "lead": "Expedition Clair Obscur 33 revoluciona el combate por turnos con su innovador sistema de parry.",
+    "date": "2025-05-18",
+    "category": "Reportajes",
+    "thumbnail": "assets/thumbnails/parry.jpg"
+  }
 ]
