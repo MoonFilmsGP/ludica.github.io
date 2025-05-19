@@ -22,7 +22,7 @@
     "title": "Nintendo Switch 2 sube la apuesta: los precios de sus juegos ya generan polémica",
     "slug": "2025-05-18-switch",
     "lead": "Con títulos que alcanzan los $79.99 dólares, Nintendo rompe con el estándar de la generación anterior. La justificación apunta a mayores costos de desarrollo, pero los jugadores critican la estrategia, especialmente por los cartuchos que solo sirven como llaves de descarga.",
-    "path": "2025-05-18-mswitch.html",
+    "path": "2025-05-18-switch.html",
     "date": "2025-05-18",
     "category": "Actualidad",
     "thumbnail": "assets/thumbnails/switch.jpg"
@@ -40,64 +40,38 @@
     "title": "Bungie enfrenta acusaciones de plagio en Marathon",
 
     "lead": "La desarrolladora Bungie ha admitido que su próximo juego, Marathon, incluye elementos visuales tomados sin autorización de la artista escocesa Fern \"Antireal\" Hook, generando controversia en la comunidad de jugadores.",
-    "category": "videojuegos",
+ 
     "path": "2025-05-18-bungie.html",
     "date": "2025-05-18",
     "category": "Reportajes",
     "thumbnail": "assets/thumbnails/bungie.jpg"
   },
   {
-    "title": "La multidisciplina, los videojuegos y el arte total",
-    "slug": "2025-05-18-multidi",
-    "lead": "¿Schopenhauer jugaría Doom eternal?",
-    "path": "2025-05-18-multidi.html",
+    "title": "Mortal Kombat 1: Definitive Edition desata la ira de los fans por promesas incumplidas",
+
+    "lead": "El lanzamiento de la edición definitiva de Mortal Kombat 1 ha generado críticas por parte de la comunidad, que acusa a NetherRealm Studios de no cumplir con las promesas de contenido adicional.",
+
+    "path": "2025-05-18-mortal1.html",
     "date": "2025-05-18",
-    "category": "Entrevistas",
-    "thumbnail": "assets/thumbnails/multidi.jpg"
+    "category": "Actualidad",
+    "thumbnail": "assets/thumbnails/mortal1.jpg"
   },
   {
-    "title": "La multidisciplina, los videojuegos y el arte total",
-    "slug": "2025-05-18-multidi",
-    "lead": "¿Schopenhauer jugaría Doom eternal?",
-    "path": "2025-05-18-multidi.html",
+    "title": "Guadalindie 2025 convierte a Málaga en el epicentro del videojuego independiente",
+
+
+    "lead": "La segunda edición de Guadalindie ha consolidado a Málaga como un referente internacional en el sector de los videojuegos indie, con más de 3.500 asistentes y 80 títulos jugables.",
+    "path": "2025-05-18-guada.html",
     "date": "2025-05-18",
     "category": "Entrevistas",
-    "thumbnail": "assets/thumbnails/multidi.jpg"
+    "thumbnail": "assets/thumbnails/guada.jpg"
   },
   {
-    "title": "La multidisciplina, los videojuegos y el arte total",
-    "slug": "2025-05-18-multidi",
-    "lead": "¿Schopenhauer jugaría Doom eternal?",
-    "path": "2025-05-18-multidi.html",
+    "title": "PS Plus Extra y Premium de mayo 2025 sorprende con una oleada de RPGs",
+    "lead": "Sony ha anunciado una selección de juegos para PS Plus Extra y Premium en mayo de 2025, destacando títulos de rol y acción que entusiasmarán a los aficionados del género.",
+    "path": "2025-05-18-psplus.html",
     "date": "2025-05-18",
     "category": "Entrevistas",
-    "thumbnail": "assets/thumbnails/multidi.jpg"
-  },
-  {
-    "title": "La multidisciplina, los videojuegos y el arte total",
-    "slug": "2025-05-18-multidi",
-    "lead": "¿Schopenhauer jugaría Doom eternal?",
-    "path": "2025-05-18-multidi.html",
-    "date": "2025-05-18",
-    "category": "Entrevistas",
-    "thumbnail": "assets/thumbnails/multidi.jpg"
-  },
-  {
-    "title": "La multidisciplina, los videojuegos y el arte total",
-    "slug": "2025-05-18-multidi",
-    "lead": "¿Schopenhauer jugaría Doom eternal?",
-    "path": "2025-05-18-multidi.html",
-    "date": "2025-05-18",
-    "category": "Entrevistas",
-    "thumbnail": "assets/thumbnails/multidi.jpg"
-  },
-  {
-    "title": "La multidisciplina, los videojuegos y el arte total",
-    "slug": "2025-05-18-multidi",
-    "lead": "¿Schopenhauer jugaría Doom eternal?",
-    "path": "2025-05-18-multidi.html",
-    "date": "2025-05-18",
-    "category": "Entrevistas",
-    "thumbnail": "assets/thumbnails/multidi.jpg"
+    "thumbnail": "assets/thumbnails/psplus.jpg"
   }
 ]
