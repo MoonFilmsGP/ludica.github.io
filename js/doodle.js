@@ -35,9 +35,9 @@ const player = {
     frameCount: 6,
     frameDelay: 0,
     x: 100,
-    y: floorY - 40,
+    y: floorY - 72,
     width: 48,
-    height: 48,
+    height: 72,
     color: '#00f',
     vy: 0,
     onGround: false
@@ -117,15 +117,17 @@ function draw() {
     });
 
     if (sprite.complete) {
-        const frameWidth = 48;
-        const frameHeight = 48;
+        const frameWidth = 341;
+        const frameHeight = 512;
+        const displayWidth = 48;
+        const displayHeight = 72;
         console.log('Dibujando sprite en', player.x, player.y, 'frame', player.frame);
         ctx.drawImage(
             sprite,
             player.frame * frameWidth, player.onGround ? 0 : frameHeight,
             frameWidth, frameHeight,
             player.x, player.y,
-            player.width, player.height
+            displayWidth, displayHeight
         );
     }
 }
