@@ -12,7 +12,7 @@ fetch('index.json')
                 const card = document.createElement('div');
                 card.className = 'article-card';
                 card.innerHTML = `
-          <img src="${article.image}" alt="${article.title}" />
+          <img src="${article.thumbnail}" alt="${article.title}" />
           <h2>${article.title}</h2>
           <p>${article.lead}</p>
           <a href="articles/${article.path}.html">Leer más</a>

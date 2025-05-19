@@ -2,9 +2,27 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: sans-serif; line-height: 1.4; background: #111; color: #eee; }
 header { position: relative; height: 60vh; overflow: hidden; }
-#doodle-container { position: relative; }
-#doodle-canvas { width: 100%; height: 100%; display: block; }
-.doodle-text { position: absolute; bottom: 2rem; left: 2rem; }
+#doodle-container {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+}
+
+#doodle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.doodle-text {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    color: white;
+}
 #main-nav { padding: 1rem; display: flex; align-items: center; gap: 1rem; background: #222; }
 #search { flex: 1; padding: 0.5rem; }
 #sections button { padding: 0.5rem 1rem; cursor: pointer; }
