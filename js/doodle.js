@@ -119,6 +119,7 @@ function draw() {
     if (sprite.complete) {
         const frameWidth = 32;
         const frameHeight = 32;
+        console.log('Dibujando sprite en', player.x, player.y, 'frame', player.frame);
         ctx.drawImage(
             sprite,
             player.frame * frameWidth, player.onGround ? 0 : frameHeight,
@@ -137,5 +138,10 @@ function loop() {
 
 // Esperar a que el sprite cargue antes de iniciar
 sprite.onload = () => {
+    console.log("Sprite cargado correctamente");
     loop();
+};
+
+sprite.onerror = () => {
+    console.error("No se pudo cargar el sprite.");
 };
