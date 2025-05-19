@@ -28,13 +28,18 @@
             <script>
                 const canvas = document.getElementById('doodle-canvas');
                 const ctx = canvas.getContext('2d');
-                canvas.width = window.innerWidth;
+
+                function resize() {
+                    canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight * 0.6;
+}
+                window.addEventListener('resize', resize);
+                resize();
 
                 const gravity = 0.6;
                 const jumpStrength = -12;
                 const floorY = canvas.height * 0.75;
-                const sectionSpacing = canvas.width / 6;
+                const letterSpacing = 100;
 
                 const player = {
                     x: 100,
@@ -46,11 +51,12 @@
                 onGround: false
 };
 
-                const platforms = Array.from({length: 5}, (_, i) => ({
-                    x: sectionSpacing * (i + 1) - 30,
+const letters = 'LÚDICA'.split('').map((char, i) => ({
+                    x: 100 + i * letterSpacing,
                 y: floorY,
-                width: 120,
-                height: 20
+                width: 60,
+                height: 20,
+                label: char
 }));
 
                 let keys = { };
@@ -70,7 +76,7 @@ window.addEventListener('keyup', e => keys[e.key] = false);
                 player.y += player.vy;
 
                 player.onGround = false;
-  platforms.forEach(platform => {
+  letters.forEach(platform => {
     if (
                 player.x < platform.x + platform.width &&
       player.x + player.width > platform.x &&
@@ -94,9 +100,13 @@ window.addEventListener('keyup', e => keys[e.key] = false);
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                 ctx.fillStyle = '#444';
-  platforms.forEach(p => {
-                    ctx.fillRect(p.x, p.y, p.width, p.height);
-  });
+  letters.forEach(l => {
+                    ctx.fillRect(l.x, l.y, l.width, l.height);
+                ctx.fillStyle = '#eee';
+                ctx.font = '20px sans-serif';
+                ctx.fillText(l.label, l.x + 15, l.y - 10);
+                ctx.fillStyle = '#444';
+  }););
 
                 ctx.fillStyle = player.color;
                 ctx.fillRect(player.x, player.y, player.width, player.height);
