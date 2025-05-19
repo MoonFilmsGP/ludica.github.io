@@ -11,7 +11,7 @@ fetch('index.json')
         <img src="${article.thumbnail}" alt="${article.title}" />
         <h2>${article.title}</h2>
         <p>${article.lead}</p>
-        <a href="articles/${article.slug}.html">Leer más</a>
+        <a href="articles/${article.path}.html">Leer más</a>
       `;
             container.appendChild(card);
         });
