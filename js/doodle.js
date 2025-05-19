@@ -121,7 +121,7 @@ function draw() {
         const frameHeight = 32;
         ctx.drawImage(
             sprite,
-            player.frame * frameWidth, 0,
+            player.frame * frameWidth, player.onGround ? 0 : frameHeight,
             frameWidth, frameHeight,
             player.x, player.y,
             player.width, player.height
