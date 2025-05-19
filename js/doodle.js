@@ -4,36 +4,36 @@ const ctx = canvas.getContext('2d');
 // Cargar fondo
 const bgImage = new Image();
 bgImage.src = 'assets/portadas/ludica.jpg';
+const sprite = new Image();
+sprite.src = 'assets/sprites/player.jpg';
 
 // Ajustar tamaño
 function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.6;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight * 0.6;
 }
 window.addEventListener('resize', resize);
 resize();
 
-// Aquí cargarás la imagen/gif o animación
 // Actualizar encabezado
 const headlineEl = document.getElementById('headline');
 const leadEl = document.getElementById('lead');
-// Ejemplo sencillo:
 headlineEl.textContent = 'Expedition Clair Obscur 33: Indie GOTY?';
 leadEl.textContent = '¿Será este el primer indie GOTY de la historia? Prueba su sistema de parry…';
 
-// Más adelante: mini-juego de parry en canvas
 // ==================== ENGINE DEL MONITO ====================
 
 // Config
 const gravity = 0.6;
 const jumpStrength = -12;
 const floorY = canvas.height * 0.75;
-const letterSpacing = 100;
+const letterSpacing = 120;
 
 // Jugador
 const player = {
+    frame: 0,
+    frameCount: 4,
+    frameDelay: 0,
     x: 100,
     y: floorY - 40,
     width: 30,
@@ -89,6 +89,15 @@ function update() {
         player.vy = 0;
         player.x = 100;
     }
+
+    // Animación del sprite
+    if (keys['ArrowLeft'] || keys['ArrowRight'] || keys['a'] || keys['d']) {
+        player.frameDelay++;
+        if (player.frameDelay > 6) {
+            player.frame = (player.frame + 1) % player.frameCount;
+            player.frameDelay = 0;
+        }
+    }
 }
 
 // Dibujo
@@ -101,17 +110,23 @@ function draw() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    ctx.fillStyle = '#444';
-    letters.forEach(l => {
+    const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#5f27cd', '#ee5253'];
+    letters.forEach((l, i) => {
+        ctx.fillStyle = colors[i % colors.length];
         ctx.fillRect(l.x, l.y, l.width, l.height);
-        ctx.fillStyle = '#eee';
-        ctx.font = '20px sans-serif';
-        ctx.fillText(l.label, l.x + 15, l.y - 10);
-        ctx.fillStyle = '#444';
     });
 
-    ctx.fillStyle = player.color;
-    ctx.fillRect(player.x, player.y, player.width, player.height);
+    if (sprite.complete) {
+        const frameWidth = 32;
+        const frameHeight = 32;
+        ctx.drawImage(
+            sprite,
+            player.frame * frameWidth, 0,
+            frameWidth, frameHeight,
+            player.x, player.y,
+            player.width, player.height
+        );
+    }
 }
 
 function loop() {
