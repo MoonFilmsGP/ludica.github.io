@@ -16,7 +16,8 @@
                     position: absolute;
                     top: 0;
                     left: 0;
-                    z-index: 0;
+                    z-index: 1;
+                    pointer-events: none; 
 }
                     .banner {
                         position: absolute;
@@ -80,6 +81,7 @@
                 <link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron:wght@700&display=swap" rel="stylesheet">
                 </head>
                 <body>
+                    <div style="height: calc(60vh + 2rem);"></div>
                     <div class="banner">LÚDICA</div>
                     <canvas id="gameCanvas"></canvas>
 
@@ -195,7 +197,21 @@ window.addEventListener('keyup', e => keys[e.key] = false);
 
   // Filtrar artículos según categoría
   document.querySelectorAll('.article-card').forEach(card => {
-                            card.style.display = (card.dataset.category === label || label === 'Principal') ? 'block' : 'none';
+    if (card.dataset.category === label || label === 'Principal') {
+                            card.style.display = 'block';
+                        card.style.opacity = 0;
+                        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      setTimeout(() => {
+                            card.style.opacity = 1;
+                        card.style.transform = 'translateY(0)';
+      }, 0);
+    } else {
+                            card.style.opacity = 0;
+                        card.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+                            card.style.display = 'none';
+      }, 300);
+    }
   });
 }
 
