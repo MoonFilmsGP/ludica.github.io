@@ -8,5 +8,14 @@
     "date": "2025-05-18",
     "category": "Reportajes",
     "thumbnail": "assets/thumbnails/parry.jpg"
+  },
+  {
+    "title": "La multidisciplina, los videojuegos y el arte total",
+    "slug": "2025-05-18-multidi",
+    "lead": "¿Schopenhauer jugaría Doom eternal?",
+    "path": "2025-05-18-multidi.html",
+    "date": "2025-05-18",
+    "category": "Reportajes",
+    "thumbnail": "assets/thumbnails/multidi.jpg"
   }
 ]
