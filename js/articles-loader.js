@@ -2,18 +2,51 @@ fetch('index.json')
     .then(response => response.json())
     .then(data => {
         const container = document.getElementById('articles-grid');
-        if (!container) return;
+        const buttons = document.querySelectorAll('#sections button');
+        const searchInput = document.getElementById('search');
+        let currentFilter = null;
 
-        data.forEach(article => {
-            const card = document.createElement('div');
-            card.className = 'article-card';
-            card.innerHTML = `
-        <img src="${article.thumbnail}" alt="${article.title}" />
-        <h2>${article.title}</h2>
-        <p>${article.lead}</p>
-        <a href="articles/${article.path}>Leer más</a>
-        <a href="articles/${article.path}">Leer más</a>
-      `;
-            container.appendChild(card);
+        function renderArticles(articles) {
+            container.innerHTML = '';
+            articles.forEach(article => {
+                const card = document.createElement('div');
+                card.className = 'article-card';
+                card.innerHTML = `
+          <img src="${article.image}" alt="${article.title}" />
+          <h2>${article.title}</h2>
+          <p>${article.lead}</p>
+          <a href="articles/${article.path}.html">Leer más</a>
+        `;
+                container.appendChild(card);
+            });
+        }
+
+        function applyFilters() {
+            const query = searchInput.value.toLowerCase();
+            let filtered = data;
+
+            if (currentFilter) {
+                filtered = filtered.filter(article => article.category === currentFilter);
+            }
+
+            if (query) {
+                filtered = filtered.filter(article =>
+                    article.title.toLowerCase().includes(query) ||
+                    article.lead.toLowerCase().includes(query) ||
+                    article.category.toLowerCase().includes(query)
+                );
+            }
+
+            renderArticles(filtered);
+        }
+
+        renderArticles(data);
+        searchInput.addEventListener('input', applyFilters);
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                currentFilter = button.dataset.section;
+                applyFilters();
+            });
         });
     })
+    .catch(err => console.error('Error cargando artículos:', err));
