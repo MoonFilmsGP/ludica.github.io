@@ -81,7 +81,7 @@
                 <link href="https://fonts.googleapis.com/css2?family=Inter&family=Orbitron:wght@700&display=swap" rel="stylesheet">
                 </head>
                 <body>
-                    <div style="height: calc(60vh + 2rem);"></div>
+                  
                     <div class="banner">LÚDICA</div>
                     <canvas id="gameCanvas"></canvas>
 
