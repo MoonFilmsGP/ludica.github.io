@@ -1,9 +1,11 @@
-﻿# -*- coding: utf-8 -*-
-
-import os
+﻿import os
 import re
 
 def extraer_contenido_util(html):
+    # Elimina <style> y <head> si existen
+    html = re.sub(r"<style.*?>.*?</style>", "", html, flags=re.DOTALL | re.IGNORECASE)
+    html = re.sub(r"<head.*?>.*?</head>", "", html, flags=re.DOTALL | re.IGNORECASE)
+
     # Busca contenido entre <main> o <article>
     patrones = [
         re.compile(r"<main[^>]*>(.*?)</main>", re.DOTALL | re.IGNORECASE),
@@ -15,7 +17,6 @@ def extraer_contenido_util(html):
         if match:
             return match.group(1).strip()
 
-    # Si no encuentra <main> ni <article>, regresa todo tal cual
     return html.strip()
 
 carpeta = "articles"
