@@ -1,4 +1,4 @@
-fetch('articles/index.json')
+fetch('index.json')
     .then(response => response.json())
     .then(data => {
         const container = document.getElementById('articles-grid');
