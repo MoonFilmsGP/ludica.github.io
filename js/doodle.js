@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 const bgImage = new Image();
 bgImage.src = 'assets/portadas/ludica.jpg';
 const sprite = new Image();
-sprite.src = 'assets/sprites/player.jpg';
+sprite.src = 'assets/sprites/player.png';
 
 // Ajustar tamaño
 function resize() {
