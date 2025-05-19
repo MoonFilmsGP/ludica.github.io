@@ -15,10 +15,10 @@ for article in articles:
     title = article["title"]
     date = article["date"]
     path = article["path"]
-    article_path = f"articles/{path}"
+    source_path = f"content/{path}"
 
     # Leer contenido del artículo ya existente
-    with open(article_path, "r", encoding="utf-8") as f:
+    with open(source_path, "r", encoding="utf-8") as f:
         content = f.read()
 
     # Armar el HTML nuevo
@@ -29,7 +29,7 @@ for article in articles:
     
 
     # Escribir de nuevo el archivo ya decorado
-    with open(article_path, "w", encoding="utf-8") as f:
+    with open(f"articles/{path}", "w", encoding="utf-8") as f:
         f.write(final_html)
 
 print("Artículos decorados correctamente.")
